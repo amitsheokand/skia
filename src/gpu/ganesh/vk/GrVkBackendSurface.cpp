@@ -246,8 +246,7 @@ static GrVkBackendTextureData* get_and_cast_data(GrBackendTexture* texture) {
 }
 
 static GrTextureType vk_image_info_to_texture_type(const GrVkImageInfo& info) {
-    if ((info.fYcbcrConversionInfo.isValid() && info.fYcbcrConversionInfo.hasExternalFormat()) ||
-        info.fImageTiling == VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT) {
+    if (info.fYcbcrConversionInfo.isValid()) {
         return GrTextureType::kExternal;
     }
     return GrTextureType::k2D;
